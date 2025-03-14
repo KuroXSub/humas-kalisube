@@ -1,0 +1,18 @@
+/* settings-heading.css */
+.settings-heading {
+    color: #1e293b; /* Dark gray */
+    font-size: 1.875rem; /* 30px */
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.settings-subheading {
+    color: #64748b; /* Gray */
+    font-size: 1.125rem; /* 18px */
+    margin-bottom: 1.5rem;
+}
+
+.settings-separator {
+    border-bottom: 1px solid #e5e7eb; /* Light gray */
+    margin-bottom: 1.5rem;
+}

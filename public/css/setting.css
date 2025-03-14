@@ -1,0 +1,40 @@
+/* appearance.css */
+.appearance-container {
+    background-color: #f9fafb; /* Light background */
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.appearance-radio-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.appearance-radio {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.appearance-radio:hover {
+    border-color: #3b82f6; /* Blue border on hover */
+    background-color: #eff6ff; /* Light blue background on hover */
+}
+
+.appearance-radio.selected {
+    border-color: #3b82f6;
+    background-color: #3b82f6;
+    color: white;
+}
+
+.appearance-radio .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}

@@ -1,0 +1,41 @@
+/* Narrow Card Styles */
+.narrow-card {
+    max-width: 600px; /* Lebar maksimum card */
+    margin: 0 auto; /* Pusatkan card */
+    padding: 2rem;
+}
+
+.main-form {
+    margin-bottom: 1.5rem;
+}
+
+.main-form label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.main-form input,
+.main-form select,
+.main-form textarea {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    color: #374151;
+    outline: none;
+}
+
+.main-form input:focus,
+.main-form select:focus,
+.main-form textarea:focus {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: #3b82f6;
+}
+
+.main-form textarea {
+    resize: vertical;
+}

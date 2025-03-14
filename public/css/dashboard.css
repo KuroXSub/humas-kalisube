@@ -1,0 +1,53 @@
+.card-dash {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.card-dash .p-6 {
+    padding: 1.5rem; /* Menyesuaikan padding agar sesuai */
+}
+
+.card-dash h3 {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600; /* font-semibold */
+    margin-bottom: 1rem; /* mb-4 */
+    border-bottom: 1px solid #e5e7eb; /* Tambahkan batas bawah */
+    padding-bottom: 0.75rem; /* Sesuaikan padding batas bawah */
+}
+
+.card-dash p {
+    font-size: 2rem; /* text-2xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 1.5rem; /* mb-6 */
+    border-bottom: 1px solid #e5e7eb; /* Tambahkan batas bawah */
+    padding-bottom: 1rem; /* Sesuaikan padding batas bawah */
+    text-align: center;
+}
+
+.card-dash .mt-4 {
+    margin-top: 1rem; /* Menyesuaikan margin atas */
+}
+
+.card-dash .mt-4 a {
+    margin-right: 0.5rem; /* Tambahkan margin kanan pada button */
+}
+
+/* Responsive Grid */
+.grid {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}

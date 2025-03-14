@@ -1,0 +1,71 @@
+/* Form Pencarian dan Filter */
+.search-filter-container {
+    margin-bottom: 0.5rem; /* Meningkatkan margin bottom */
+    padding: 0.5rem;
+}
+
+.search-form {
+    display: flex;
+    gap: 0.75rem; /* Meningkatkan gap */
+    flex-wrap: wrap;
+    align-items: center; /* Menyelaraskan item secara vertikal */
+}
+
+.search-form input,
+.search-form select {
+    padding: 0.625rem 1rem; /* Meningkatkan padding */
+    border: 1px solid #d1d5db; /* Warna border yang lebih cerah */
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan */
+    transition: border-color 0.3s ease; /* Menambahkan transisi */
+}
+
+.search-form input:focus,
+.search-form select:focus {
+    outline: none;
+    border-color: #3b82f6; /* Warna border saat fokus */
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    gap: 8px;
+}
+
+.pagination .page-item {
+    list-style: none;
+}
+
+.pagination .page-item .page-link {
+    color: #ffffff;
+    background: #10b981;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.pagination .page-item .page-link:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+.pagination .page-item.active .page-link {
+    background: #274fbe;
+    color: white;
+}
+
+.pagination .page-item.disabled .page-link {
+    background: #d6eaf0;
+    color: #6c757d;
+    pointer-events: none;
+    box-shadow: none;
+}

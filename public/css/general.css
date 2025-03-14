@@ -1,0 +1,46 @@
+.container {
+    padding: 3rem 0; /* py-12 */
+    max-width: 1280px; /* max-w-7xl */
+    margin: 0 auto; /* mx-auto */
+    padding-left: 1rem; /* sm:px-6 */
+    padding-right: 1rem; /* sm:px-6 */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animasi Slide-In */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.card {
+    background-color: white; /* bg-white */
+    border-radius: 0.5rem; /* sm:rounded-lg */
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* shadow-sm */
+    overflow: hidden; /* overflow-hidden */
+    padding: 1.5rem; /* p-6 */
+    animation: fadeIn 0.8s ease-out;
+}
+
+.header {
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 600; /* font-semibold */
+    color: #1a202c; /* text-gray-800 */
+}
+

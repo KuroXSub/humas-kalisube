@@ -1,0 +1,45 @@
+/* layout.css */
+.settings-layout {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.settings-navlist {
+    width: 220px;
+    padding-right: 2rem;
+    border-right: 1px solid #e5e7eb;
+}
+
+.settings-navlist-item {
+    padding: 0.75rem 1rem;
+    color: #64748b; /* Gray */
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.settings-navlist-item:hover {
+    background-color: #eff6ff; /* Light blue */
+    color: #3b82f6; /* Blue */
+}
+
+.settings-content {
+    flex: 1;
+}
+
+.settings-content-heading {
+    color: #1e293b; /* Dark gray */
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.settings-content-subheading {
+    color: #64748b; /* Gray */
+    font-size: 1rem; /* 16px */
+    margin-bottom: 1.5rem;
+}

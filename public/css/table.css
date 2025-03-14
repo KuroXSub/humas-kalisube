@@ -1,0 +1,105 @@
+/* Table Styles */
+.main-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+}
+
+.main-table thead th {
+    background-color: #1e3a8a; /* bg-blue-500 */
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0.75rem 1.5rem;
+    text-align: left;
+}
+
+.main-table tbody td {
+    padding: 1rem 1.5rem;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.main-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.main-table tbody tr:hover {
+    background-color: #f9fafb; /* hover:bg-gray-50 */
+}
+
+/* Memotong teks yang terlalu panjang */
+.truncate-text {
+    max-width: 300px; /* Sesuaikan lebar maksimum sesuai kebutuhan */
+    white-space: nowrap; /* Mencegah teks untuk wrap ke baris baru */
+    overflow: hidden; /* Menyembunyikan teks yang melebihi lebar */
+    text-overflow: ellipsis; /* Menambahkan ellipsis (...) */
+}
+
+/* Tombol Aksi */
+.main-table tbody td a {
+    color: #4f46e5; /* text-indigo-600 */
+    margin-right: 0.75rem;
+    text-decoration: none;
+}
+
+.main-table tbody td a:hover {
+    color: #3730a3; /* hover:text-indigo-900 */
+}
+
+.main-table tbody td button {
+    color: #dc2626; /* text-red-600 */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: inherit;
+}
+
+.main-table tbody td button:hover {
+    color: #991b1b; /* hover:text-red-900 */
+}
+
+/* Responsive Table */
+@media (max-width: 640px) {
+    .main-table thead {
+        display: none; /* Hide thead on small screens */
+    }
+
+    .main-table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.375rem;
+    }
+
+    .main-table tbody td {
+        display: block;
+        text-align: right;
+        padding: 0.5rem 1rem;
+    }
+
+    .main-table tbody td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: 600;
+        color: #374151;
+    }
+
+    /* Sembunyikan Deskripsi di layar mobile */
+    .main-table tbody td[data-label="Deskripsi"] {
+        display: none;
+    }
+
+    /* Tampilkan judul dan aksi */
+    .main-table tbody td[data-label="Judul"],
+    .main-table tbody td[data-label="Aksi"] {
+        display: block;
+    }
+}
