@@ -8,10 +8,17 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\SuggestionController;
 use App\Http\Controllers\DashboardController; // Tambahkan ini
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GoogleController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])
+    ->name('google.redirect'); // Ubah nama route untuk konsistensi
+
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])
+    ->name('google.callback');
 
 Route::get('/dashboard', [DashboardController::class, 'index']) // Perubahan di sini
     ->middleware(['auth', 'verified'])
