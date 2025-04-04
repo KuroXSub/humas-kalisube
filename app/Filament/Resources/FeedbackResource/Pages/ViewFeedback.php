@@ -24,8 +24,9 @@ class ViewFeedback extends ViewRecord
             Forms\Components\TextInput::make('complaint.id')
                 ->label('ID Pengaduan')
                 ->disabled(), // Nonaktifkan input
-            Forms\Components\TextInput::make('user.name')
-                ->label('Nama User')
+            Forms\Components\TextInput::make('hashed_user')
+                ->label('User ID')
+                ->formatStateUsing(fn ($record) => $record->hashed_user)
                 ->disabled(),
             Forms\Components\Textarea::make('komentar')
                 ->label('Komentar')

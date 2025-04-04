@@ -27,9 +27,9 @@ class FeedbackResource extends Resource
                     ->label('ID Pengaduan')
                     ->relationship('complaint', 'id')
                     ->disabled(),
-                Forms\Components\Select::make('user_id')
-                    ->label('Nama User')
-                    ->relationship('user', 'name')
+                Forms\Components\TextInput::make('hashed_user')
+                    ->label('User ID')
+                    ->formatStateUsing(fn ($record) => $record?->hashed_user)
                     ->disabled(),
                 Forms\Components\Textarea::make('komentar')
                     ->label('Komentar')
@@ -47,8 +47,11 @@ class FeedbackResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('complaint.id')->label('ID Pengaduan')->sortable(),
-                Tables\Columns\TextColumn::make('user.name')->label('Nama User')->sortable(),
+                Tables\Columns\TextColumn::make('complaint.id')->label('ID Pengaduan'),
+                Tables\Columns\TextColumn::make('hashed_user')
+                    ->label('User ID')
+                    ->sortable()
+                    ->searchable(false),
                 Tables\Columns\TextColumn::make('komentar')->label('Komentar')->limit(50),
                 Tables\Columns\TextColumn::make('rating')->label('Rating')->sortable(),
                 Tables\Columns\TextColumn::make('created_at')->label('Dibuat Pada')->dateTime(),

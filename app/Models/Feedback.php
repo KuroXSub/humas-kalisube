@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Activitylog\LogOptions;
+use Illuminate\Support\Facades\Hash;
 
 class Feedback extends Model
 {
@@ -14,6 +15,7 @@ class Feedback extends Model
     protected $fillable = [
         'complaint_id',
         'user_id',
+        'user_hash',
         'komentar',
         'rating',
     ];
@@ -34,5 +36,30 @@ class Feedback extends Model
     {
         return LogOptions::defaults()
             ->logFillable();
+    }
+
+    protected $appends = ['hashed_user'];
+
+    protected static function booted()
+    {
+        static::creating(function ($feedback) {
+            $feedback->user_hash = static::generateUserHash($feedback->user_id);
+        });
+
+        static::updating(function ($feedback) {
+            if ($feedback->isDirty('user_id')) {
+                $feedback->user_hash = static::generateUserHash($feedback->user_id);
+            }
+        });
+    }
+
+    public static function generateUserHash($userId)
+    {
+        return substr(hash_hmac('sha256', $userId, config('app.key')), 0, 12);
+    }
+
+    public function getHashedUserAttribute()
+    {
+        return 'User-' . $this->user_hash;
     }
 }
