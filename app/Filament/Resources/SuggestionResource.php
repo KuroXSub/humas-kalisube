@@ -30,10 +30,16 @@ class SuggestionResource extends Resource
                     ->searchable()
                     ->required()
                     ->preload()
-                    ->disabledOn('edit')
+                    ->hiddenOn('edit')
                     ->options(function () {
                         return \App\Models\User::masyarakat()->pluck('name', 'id');
                     }),
+
+                Forms\Components\TextInput::make('hashed_user')
+                    ->label('User ID')
+                    ->formatStateUsing(fn ($record) => $record ? $record->hashed_user : null)
+                    ->disabled(fn ($record) => $record !== null)
+                    ->visibleOn('edit'),
                 Forms\Components\TextInput::make('judul')
                     ->label('Judul Saran')
                     ->required(),
@@ -47,7 +53,10 @@ class SuggestionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.name')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('hashed_user')
+                    ->label('User ID')
+                    ->sortable()
+                    ->searchable(false),
                 Tables\Columns\TextColumn::make('judul')->sortable(),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()
