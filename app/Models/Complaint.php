@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Scopes\AnonymousComplaintScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -14,6 +15,7 @@ class Complaint extends Model
 
     protected $fillable = [
         'user_id',
+        'user_hash',
         'kategori_pengaduan_id',
         'deskripsi',
         'status',
@@ -22,7 +24,6 @@ class Complaint extends Model
         'petugas_id',
     ];
 
-    // Relasi dengan user yang mengajukan pengaduan
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -52,4 +53,29 @@ class Complaint extends Model
             ->logFillable();
     }
 
+    protected $appends = ['hashed_user'];
+
+    // Otomatis generate hash saat membuat complaint
+    protected static function booted()
+    {
+        static::creating(function ($complaint) {
+            $complaint->user_hash = static::generateUserHash($complaint->user_id);
+        });
+
+        static::updating(function ($complaint) {
+            if ($complaint->isDirty('user_id')) {
+                $complaint->user_hash = Complaint::generateUserHash($complaint->user_id);
+            }
+        });
+    }
+
+    public static function generateUserHash($userId)
+    {
+        return substr(hash_hmac('sha256', $userId, config('app.key')), 0, 12);
+    }
+
+    public function getHashedUserAttribute()
+    {
+        return 'User-' . $this->user_hash;
+    }
 }

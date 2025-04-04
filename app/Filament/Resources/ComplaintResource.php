@@ -7,6 +7,7 @@ use App\Filament\Resources\ComplaintResource\RelationManagers;
 use App\Models\Complaint;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\TrashedFilter;
@@ -30,10 +31,17 @@ class ComplaintResource extends Resource
                     ->searchable()
                     ->required()
                     ->preload()
-                    ->disabledOn('edit')
+                    ->hiddenOn('edit') // Sembunyikan saat edit
                     ->options(function () {
                         return \App\Models\User::masyarakat()->pluck('name', 'id');
                     }),
+                    
+                Forms\Components\TextInput::make('hashed_user')
+                    ->label('ID Pelapor')
+                    ->formatStateUsing(fn ($record) => $record?->hashed_user)
+                    ->disabled()
+                    ->visibleOn('edit'), // Hanya tampil saat edit
+
                 Forms\Components\Select::make('kategori_pengaduan_id')
                     ->label('Kategori Pengaduan')
                     ->relationship('kategoriPengaduan', 'nama_kategori')
@@ -74,7 +82,15 @@ class ComplaintResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.name')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('hashed_user')
+                    ->label('ID Pelapor')
+                    ->sortable()
+                    ->searchable(query: function (Builder $query, string $search): Builder {
+                        if (str_starts_with($search, 'User-')) {
+                            return $query->where('user_hash', 'like', "%".substr($search, 5)."%");
+                        }
+                        return $query->whereHas('user', fn($q) => $q->where('name', 'like', "%{$search}%"));
+                    }),
                 Tables\Columns\TextColumn::make('kategoriPengaduan.nama_kategori')->sortable(),
                 Tables\Columns\TextColumn::make('status')->sortable(),
                 Tables\Columns\TextColumn::make('prioritas')->sortable(),
