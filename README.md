@@ -7,11 +7,25 @@
     <ul>
       <li>Masyarakat dapat membuat, membaca, mengupdate, dan menghapus pengaduan.</li>
       <li>Setiap pengaduan memiliki kategori, deskripsi, status, dan prioritas.</li>
+      <li><strong>Fitur Baru:</strong> Anonimisasi data pengadu dengan sistem hashing untuk perlindungan privasi di Admin Panel</li>
     </ul>
   </li>
   <li><strong>CRUD Saran:</strong>
     <ul>
       <li>Masyarakat dapat menyampaikan saran, membaca, mengupdate, dan menghapus saran yang telah diajukan.</li>
+      <li><strong>Fitur Baru:</strong> Sistem hashing untuk menyamarkan identitas pengirim saran di Admin Panel</li>
+    </ul>
+  </li>
+  <li><strong>Feedback:</strong>
+    <ul>
+      <li>Memberikan rating dan komentar terhadap pengaduan</li>
+      <li><strong>Fitur Baru:</strong> Proteksi identitas dengan hashing user ID di Admin Panel</li>
+    </ul>
+  </li>
+  <li><strong>Autentikasi:</strong>
+    <ul>
+      <li><strong>Fitur Baru:</strong> Login dengan Google menggunakan Laravel Socialite</li>
+      <li>Registrasi dan login tradisional</li>
     </ul>
   </li>
   <li><strong>Beranda (Overview):</strong> Menampilkan ringkasan pengaduan dan saran.</li>
@@ -25,6 +39,26 @@
   <li><strong>Manajemen Admin:</strong> Admin dapat mengelola data pengaduan, saran, kategori, dan petugas menggunakan Filament v3.</li>
 </ul>
 
+<h2>Fitur Baru</h2>
+
+<h3>1. Sistem Hashing untuk Perlindungan Identitas di Admin Panel</h3>
+<p>Kami menerapkan sistem hashing untuk melindungi identitas pengguna dalam fitur pengaduan, saran, dan feedback:</p>
+<ul>
+  <li>Identitas pengguna ditampilkan dalam bentuk hash (contoh: User-a1b2c3d4e5f6)</li>
+  <li>Data asli tetap tersimpan di database namun tidak terlihat di antarmuka</li>
+  <li>Konsisten - user yang sama akan memiliki hash yang sama di seluruh sistem</li>
+  <li>Menggunakan algoritma SHA-256 dengan salt dari app key</li>
+</ul>
+
+<h3>2. Login dengan Google</h3>
+<p>Sistem sekarang mendukung autentikasi menggunakan akun Google:</p>
+<ul>
+  <li>Menggunakan Laravel Socialite untuk integrasi OAuth</li>
+  <li>Auto-registrasi untuk user baru</li>
+  <li>Auto-verifikasi email untuk user Google</li>
+  <li>Tombol login Google tersedia di halaman login/register</li>
+</ul>
+
 <h2>Teknologi yang Digunakan</h2>
 <ul>
   <li><strong>Framework:</strong> Laravel 12</li>
@@ -33,62 +67,67 @@
   <li><strong>PHP:</strong> 8.3.15</li>
   <li><strong>Database:</strong> MySQL 8.0.30</li>
   <li><strong>Frontend:</strong> Tailwind CSS, Livewire</li>
-  <li><strong>Authentication:</strong> Laravel</li>
+  <li><strong>Authentication:</strong> Laravel + Socialite</li>
+  <li><strong>Security:</strong> Hashing SHA-256, OAuth 2.0</li>
 </ul>
 
 <h2>Petunjuk Instalasi</h2>
-<p>Berikut adalah langkah-langkah untuk menginstal dan menjalankan proyek ini di lokal:</p>
 
-<h3>1. Persyaratan Sistem</h3>
+<h3>Persyaratan Tambahan</h3>
 <ul>
-  <li>PHP 8.3.15</li>
-  <li>Composer</li>
-  <li>MySQL 8.0.30</li>
-  <li>Laragon (opsional, untuk web server dan database)</li>
-  <li>Node.js (untuk kompilasi asset)</li>
+  <li>Akun Google Developer untuk OAuth</li>
+  <li>Client ID dan Secret dari Google Cloud Console</li>
 </ul>
 
-<h3>2. Clone Repository</h3>
-<pre><code>git clone https://github.com/KuroXSub/humas-kalisube.git
-cd repository-name</code></pre>
+<h3>Konfigurasi Google OAuth</h3>
+<ol>
+  <li>Buka <a href="https://console.cloud.google.com/">Google Cloud Console</a></li>
+  <li>Buat project baru atau pilih yang sudah ada</li>
+  <li>Navigasi ke "APIs & Services" > "Credentials"</li>
+  <li>Buat OAuth Client ID (tipe Web Application)</li>
+  <li>Tambahkan authorized redirect URI: <code>http://127.0.0.1:8000/auth/google/callback</code></li>
+  <li>Tambahkan ke .env:
+    <pre><code>GOOGLE_CLIENT_ID=your_client_id
+GOOGLE_CLIENT_SECRET=your_client_secret
+GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/auth/google/callback</code></pre>
+  </li>
+</ol>
 
-<h3>3. Install Dependencies</h3>
-<pre><code>composer install
+<h3>Langkah Instalasi</h3>
+<ol>
+  <li>Clone repository</li>
+  <li>Install dependencies:
+    <pre><code>composer install
 npm install</code></pre>
+  </li>
+  <li>Konfigurasi environment:
+    <pre><code>cp .env.example .env
+php artisan key:generate</code></pre>
+  </li>
+  <li>Migrasi database:
+    <pre><code>php artisan migrate</code></pre>
+  </li>
+  <li>Kompilasi asset:
+    <pre><code>npm run build</code></pre>
+  </li>
+  <li>Jalankan aplikasi:
+    <pre><code>php artisan serve</code></pre>
+  </li>
+</ol>
 
-<h3>4. Konfigurasi Environment</h3>
-<pre><code>cp .env.example .env</code></pre>
-<p>Buka file <code>.env</code> dan sesuaikan konfigurasi database:</p>
-<pre><code>DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=db_pengaduan_kalisube
-DB_USERNAME=root
-DB_PASSWORD=</code></pre>
+<h2>Cara Menggunakan Fitur Baru</h2>
 
-<h3>5. Generate Key</h3>
-<pre><code>php artisan key:generate</code></pre>
+<h3>Login dengan Google</h3>
+<ol>
+  <li>Kunjungi halaman login</li>
+  <li>Klik tombol "Login with Google"</li>
+  <li>Pilih akun Google yang ingin digunakan</li>
+  <li>Setelah persetujuan, Anda akan otomatis login</li>
+</ol>
 
-<h3>6. Migrasi Database</h3>
-<pre><code>php artisan migrate</code></pre>
-
-<h3>7. Kompilasi Asset</h3>
-<pre><code>npm run build
-composer run dev</code></pre>
-
-<h3>8. Jalankan Aplikasi</h3>
-<pre><code>php artisan serve</code></pre>
-<p>Buka browser dan akses <a href="http://127.0.01:8000">http://127.0.01:8000</a>.</p>
-
-<h2>Cara Menggunakan</h2>
-<h3>Masyarakat:</h3>
+<h3>Sistem Hashing Identitas</h3>
 <ul>
-  <li>Daftar atau login untuk mengajukan pengaduan dan saran.</li>
-  <li>Pantau status pengaduan dan saran yang telah diajukan.</li>
-</ul>
-
-<h3>Admin:</h3>
-<ul>
-  <li>Login ke panel admin di <code>/admin</code>.</li>
-  <li>Kelola data pengaduan, saran, kategori, dan petugas.</li>
+  <li>Di admin panel, identitas user akan ditampilkan sebagai hash</li>
+  <li>Data asli tetap tersimpan di database</li>
+  <li>Hash yang sama akan selalu mewakili user yang sama</li>
 </ul>
