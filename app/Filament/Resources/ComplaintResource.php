@@ -19,6 +19,8 @@ class ComplaintResource extends Resource
 {
     protected static ?string $model = Complaint::class;
 
+    protected static ?string $navigationGroup = 'Pengaduan & Aspirasi';
+
     protected static ?string $navigationIcon = 'heroicon-o-exclamation-circle';
 
     public static function form(Form $form): Form
