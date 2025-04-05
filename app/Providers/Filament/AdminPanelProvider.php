@@ -12,12 +12,15 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
+use Filament\Notifications\Livewire\Notifications;
+use Filament\Pages\Auth\Login;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Illuminate\Support\Facades\Blade;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -29,7 +32,13 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::hex('#1e3a8a'),  // Dark blue
+                'secondary' => Color::hex('#1e40af'), // Medium blue
+                'danger' => Color::hex('#dc2626'),
+                'info' => Color::hex('#0284c7'),
+                'success' => Color::hex('#16a34a'),
+                'warning' => Color::hex('#ea580c'),
+                'gray' => Color::hex('#6b7280'),
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -39,7 +48,9 @@ class AdminPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                \App\Filament\Resources\UserResource\Widgets\StatsOverview::class,
+                \App\Filament\Resources\FeedbackResource\Widgets\StatsOverview::class,
+                \App\Filament\Resources\ComplaintResource\Widgets\StatsOverview::class,
             ])
             ->resources([
                 config('filament-logger.activity_resource')
@@ -54,8 +65,8 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                
             ])
+            ->databaseNotifications()
             ->authMiddleware([
                 Authenticate::class,
                 EnsureUserIsVerifiedAdmin::class,
