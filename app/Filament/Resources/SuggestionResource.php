@@ -18,6 +18,8 @@ class SuggestionResource extends Resource
 {
     protected static ?string $model = Suggestion::class;
 
+    protected static ?string $navigationGroup = 'Pengaduan & Aspirasi';
+
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-oval-left-ellipsis';
 
     public static function form(Form $form): Form
