@@ -1,133 +1,173 @@
 <h1>Website Pengaduan dan Saran Desa Kalisube</h1>
 <p>Website Pengaduan dan Saran Desa Kalisube adalah sebuah platform yang dirancang untuk memudahkan masyarakat dalam menyampaikan pengaduan dan saran terkait pembangunan dan pelayanan di Desa Kalisube. Website ini dikembangkan menggunakan Laravel 12 dengan dukungan Filament v3 untuk manajemen admin. Web server dan database dijalankan menggunakan Laragon dengan PHP 8.3.15 dan MySQL 8.0.30.</p>
 
-<h2>Fitur</h2>
+<h2>Fitur Utama</h2>
+
+<h3>Manajemen Data</h3>
 <ul>
-  <li><strong>CRUD Pengaduan:</strong>
+  <li><strong>Pengaduan:</strong>
     <ul>
-      <li>Masyarakat dapat membuat, membaca, mengupdate, dan menghapus pengaduan.</li>
-      <li>Setiap pengaduan memiliki kategori, deskripsi, status, dan prioritas.</li>
-      <li><strong>Fitur Baru:</strong> Anonimisasi data pengadu dengan sistem hashing untuk perlindungan privasi di Admin Panel</li>
+      <li>CRUD pengaduan dengan kategori, deskripsi, status, dan prioritas</li>
+      <li>Sistem anonimisasi dengan hashing SHA-256 di admin panel</li>
+      <li>Notifikasi real-time untuk admin saat ada pengaduan baru</li>
     </ul>
   </li>
-  <li><strong>CRUD Saran:</strong>
+  <li><strong>Saran:</strong>
     <ul>
-      <li>Masyarakat dapat menyampaikan saran, membaca, mengupdate, dan menghapus saran yang telah diajukan.</li>
-      <li><strong>Fitur Baru:</strong> Sistem hashing untuk menyamarkan identitas pengirim saran di Admin Panel</li>
+      <li>CRUD saran dari masyarakat</li>
+      <li>Proteksi identitas dengan sistem hashing</li>
+      <li>Notifikasi untuk admin saat saran baru masuk</li>
     </ul>
   </li>
   <li><strong>Feedback:</strong>
     <ul>
-      <li>Memberikan rating dan komentar terhadap pengaduan</li>
-      <li><strong>Fitur Baru:</strong> Proteksi identitas dengan hashing user ID di Admin Panel</li>
+      <li>Sistem rating dan komentar</li>
+      <li>Identitas terproteksi dengan hashing</li>
     </ul>
   </li>
-  <li><strong>Autentikasi:</strong>
-    <ul>
-      <li><strong>Fitur Baru:</strong> Login dengan Google menggunakan Laravel Socialite</li>
-      <li>Registrasi dan login tradisional</li>
-    </ul>
-  </li>
-  <li><strong>Beranda (Overview):</strong> Menampilkan ringkasan pengaduan dan saran.</li>
-  <li><strong>Pencarian dan Filter:</strong>
-    <ul>
-      <li>Pencarian berdasarkan kategori, deskripsi, atau status.</li>
-      <li>Filter berdasarkan status (menunggu, diproses, selesai) dan prioritas.</li>
-    </ul>
-  </li>
-  <li><strong>Pagination:</strong> Data pengaduan dan saran ditampilkan dengan paginasi untuk memudahkan navigasi.</li>
-  <li><strong>Manajemen Admin:</strong> Admin dapat mengelola data pengaduan, saran, kategori, dan petugas menggunakan Filament v3.</li>
 </ul>
 
-<h2>Fitur Baru</h2>
-
-<h3>1. Sistem Hashing untuk Perlindungan Identitas di Admin Panel</h3>
-<p>Kami menerapkan sistem hashing untuk melindungi identitas pengguna dalam fitur pengaduan, saran, dan feedback:</p>
+<h3>Admin Panel Modern</h3>
 <ul>
-  <li>Identitas pengguna ditampilkan dalam bentuk hash (contoh: User-a1b2c3d4e5f6)</li>
-  <li>Data asli tetap tersimpan di database namun tidak terlihat di antarmuka</li>
-  <li>Konsisten - user yang sama akan memiliki hash yang sama di seluruh sistem</li>
-  <li>Menggunakan algoritma SHA-256 dengan salt dari app key</li>
+  <li><strong>Dashboard Overview:</strong>
+    <ul>
+      <li>Ringkasan data dalam 4 kelompok widget</li>
+      <li>Tampilan responsive dengan kolom dinamis</li>
+    </ul>
+  </li>
+  <li><strong>Warna Profesional:</strong>
+    <ul>
+      <li>Palet warna biru (#1e3a8a) sebagai primary color</li>
+      <li>Kombinasi warna untuk status (hijau, kuning, merah)</li>
+    </ul>
+  </li>
+  <li><strong>Sistem Notifikasi:</strong>
+    <ul>
+      <li>Notifikasi real-time untuk aktivitas user</li>
+      <li>History aktivitas terpusat</li>
+    </ul>
+  </li>
 </ul>
 
-<h3>2. Login dengan Google</h3>
-<p>Sistem sekarang mendukung autentikasi menggunakan akun Google:</p>
+<h3>Autentikasi</h3>
 <ul>
-  <li>Menggunakan Laravel Socialite untuk integrasi OAuth</li>
-  <li>Auto-registrasi untuk user baru</li>
-  <li>Auto-verifikasi email untuk user Google</li>
-  <li>Tombol login Google tersedia di halaman login/register</li>
+  <li>Login dengan email/password</li>
+  <li>Login dengan Google menggunakan Socialite</li>
+  <li>Auto-registrasi dan verifikasi untuk user baru</li>
+</ul>
+
+<h2>Dashboard Admin Panel</h2>
+
+<h3>Overview Widget</h3>
+<p>Dashboard admin menampilkan ringkasan data dalam 4 kelompok:</p>
+
+<ol>
+  <li><strong>Informasi Umum (2 kolom):</strong>
+    <ul>
+      <li>Total Masyarakat terdaftar</li>
+      <li>Jumlah Kategori pengaduan</li>
+    </ul>
+  </li>
+  <li><strong>Status Pengaduan (3 kolom):</strong>
+    <ul>
+      <li>Pengaduan Menunggu</li>
+      <li>Pengaduan Diproses</li>
+      <li>Pengaduan Selesai</li>
+    </ul>
+  </li>
+  <li><strong>Prioritas Pengaduan (3 kolom):</strong>
+    <ul>
+      <li>Prioritas Rendah</li>
+      <li>Prioritas Sedang</li>
+      <li>Prioritas Tinggi</li>
+    </ul>
+  </li>
+  <li><strong>Partisipasi Masyarakat (2 kolom):</strong>
+    <ul>
+      <li>Total Feedback</li>
+      <li>Total Saran</li>
+    </ul>
+  </li>
+</ol>
+
+<h3>Fitur Notifikasi</h3>
+<ul>
+  <li>Notifikasi saat user baru mendaftar</li>
+  <li>Peringatan ketika ada pengaduan baru</li>
+  <li>Update status pengaduan</li>
+  <li>Notifikasi aktivitas CRUD saran</li>
 </ul>
 
 <h2>Teknologi yang Digunakan</h2>
 <ul>
   <li><strong>Framework:</strong> Laravel 12</li>
   <li><strong>Admin Panel:</strong> Filament v3</li>
-  <li><strong>Web Server:</strong> Laragon</li>
-  <li><strong>PHP:</strong> 8.3.15</li>
   <li><strong>Database:</strong> MySQL 8.0.30</li>
   <li><strong>Frontend:</strong> Tailwind CSS, Livewire</li>
-  <li><strong>Authentication:</strong> Laravel + Socialite</li>
-  <li><strong>Security:</strong> Hashing SHA-256, OAuth 2.0</li>
+  <li><strong>Autentikasi:</strong> Laravel + Socialite</li>
+  <li><strong>Keamanan:</strong> Hashing SHA-256, OAuth 2.0</li>
+  <li><strong>Notifikasi:</strong> Laravel Notifications</li>
 </ul>
 
 <h2>Petunjuk Instalasi</h2>
 
-<h3>Persyaratan Tambahan</h3>
-<ul>
-  <li>Akun Google Developer untuk OAuth</li>
-  <li>Client ID dan Secret dari Google Cloud Console</li>
-</ul>
-
-<h3>Konfigurasi Google OAuth</h3>
-<ol>
-  <li>Buka <a href="https://console.cloud.google.com/">Google Cloud Console</a></li>
-  <li>Buat project baru atau pilih yang sudah ada</li>
-  <li>Navigasi ke "APIs & Services" > "Credentials"</li>
-  <li>Buat OAuth Client ID (tipe Web Application)</li>
-  <li>Tambahkan authorized redirect URI: <code>http://127.0.0.1:8000/auth/google/callback</code></li>
-  <li>Tambahkan ke .env:
-    <pre><code>GOOGLE_CLIENT_ID=your_client_id
-GOOGLE_CLIENT_SECRET=your_client_secret
-GOOGLE_REDIRECT_URI=http://127.0.0.1:8000/auth/google/callback</code></pre>
-  </li>
-</ol>
-
-<h3>Langkah Instalasi</h3>
+<h3>Konfigurasi Awal</h3>
 <ol>
   <li>Clone repository</li>
+  <pre><code>git clone https://github.com/KuroXSub/organization-spala.git
+cd organization-spala</code></pre>
   <li>Install dependencies:
     <pre><code>composer install
 npm install</code></pre>
   </li>
-  <li>Konfigurasi environment:
+  <li>Setup environment:
     <pre><code>cp .env.example .env
 php artisan key:generate</code></pre>
   </li>
+  <p>Buka file <code>.env</code> dan sesuaikan konfigurasi database:</p>
+<pre><code>DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=db_pengaduan_kalisube
+DB_USERNAME=root
+DB_PASSWORD=</code></pre>
+</ol>
+
+<h3>Konfigurasi Admin Panel</h3>
+<ol>
   <li>Migrasi database:
     <pre><code>php artisan migrate</code></pre>
   </li>
-  <li>Kompilasi asset:
-    <pre><code>npm run build</code></pre>
+  <li>Kompilasi assets:
+    <pre><code>npm run build
+composer run dev</code></pre>
   </li>
-  <li>Jalankan aplikasi:
+  <li>Jalankan sistem:
     <pre><code>php artisan serve</code></pre>
   </li>
 </ol>
 
-<h2>Cara Menggunakan Fitur Baru</h2>
+<h3>Akses Admin Panel</h3>
+<ul>
+  <li>Buat User <code>php artisan make:filament-user</code></li>
+  <li>Buka <code>http://127.0.0.1:8000/admin</code></li>
+  <li>Login dengan akun admin</li>
+  <li>Dashboard overview akan menampilkan ringkasan sistem</li>
+</ul>
 
-<h3>Login dengan Google</h3>
+<h2>Panduan Penggunaan</h2>
+
+<h3>Untuk Admin</h3>
 <ol>
-  <li>Kunjungi halaman login</li>
-  <li>Klik tombol "Login with Google"</li>
-  <li>Pilih akun Google yang ingin digunakan</li>
-  <li>Setelah persetujuan, Anda akan otomatis login</li>
+  <li>Pantau semua aktivitas melalui dashboard</li>
+  <li>Kelola pengaduan melalui menu khusus</li>
+  <li>Lihat notifikasi di pojok kanan atas</li>
 </ol>
 
-<h3>Sistem Hashing Identitas</h3>
-<ul>
-  <li>Di admin panel, identitas user akan ditampilkan sebagai hash</li>
-  <li>Data asli tetap tersimpan di database</li>
-  <li>Hash yang sama akan selalu mewakili user yang sama</li>
-</ul>
+<h3>Untuk Masyarakat</h3>
+<ol>
+  <li>Login menggunakan email atau Google</li>
+  <li>Ajukan pengaduan/saran melalui form</li>
+  <li>Pantau status pengaduan Anda</li>
+  <li>Berikan feedback untuk pengaduan</li>
+</ol>
