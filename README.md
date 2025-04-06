@@ -114,7 +114,7 @@
 <h3>Konfigurasi Awal</h3>
 <ol>
   <li>Clone repository</li>
-  <pre><code>git clone https://github.com/KuroXSub/organization-spala.git
+  <pre><code>git clone https://github.com/KuroXSub/humas-kalisube.git
 cd organization-spala</code></pre>
   <li>Install dependencies:
     <pre><code>composer install
@@ -171,3 +171,94 @@ composer run dev</code></pre>
   <li>Pantau status pengaduan Anda</li>
   <li>Berikan feedback untuk pengaduan</li>
 </ol>
+
+<h2>Fitur Baru: Sistem Enkripsi/Dekripsi File</h2>
+
+<h3>Manajemen File Terenkripsi</h3>
+<ul>
+    <li>
+        <strong>Admin Panel:</strong>
+        <ul>
+            <li>Upload file dengan enkripsi AES-256-CBC</li>
+            <li>Input kunci enkripsi khusus untuk setiap file</li>
+            <li>Auto-generate hash kunci (SHA-256) untuk keamanan</li>
+            <li>
+                Daftar file terenkripsi dengan informasi:
+                <ul>
+                    <li>Nama asli file</li>
+                    <li>Tipe file</li>
+                    <li>Tanggal upload</li>
+                    <li>Ukuran file</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Public Access:</strong>
+        <ul>
+            <li>Halaman khusus untuk dekripsi file</li>
+            <li>Input kunci dekripsi oleh masyarakat</li>
+            <li>Download otomatis setelah dekripsi sukses</li>
+            <li>Proteksi brute-force dengan rate limiting</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>Alur Kerja</h3>
+<ol>
+    <li>
+        <strong>Admin Mengupload File:</strong>
+        <ul>
+            <li>Pilih file melalui admin panel</li>
+            <li>Masukkan kunci enkripsi (minimal 8 karakter)</li>
+            <li>
+                Sistem otomatis:
+                <ul>
+                    <li>Generate IV (Initialization Vector)</li>
+                    <li>Enkripsi konten file</li>
+                    <li>Simpan ke storage private</li>
+                    <li>Hash kunci enkripsi (bcrypt)</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Masyarakat Mengakses File:</strong>
+        <ul>
+            <li>Buka link publik file</li>
+            <li>Masukkan kunci dekripsi yang diberikan admin</li>
+            <li>
+                Sistem otomatis:
+                <ul>
+                    <li>Verifikasi kunci dengan hash</li>
+                    <li>Dekripsi file di memory</li>
+                    <li>Stream download ke browser</li>
+                    <li>Hapus cache setelah download</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ol>
+
+<h3>Keamanan Sistem</h3>
+<ul>
+    <li><strong>Enkripsi:</strong> AES-256-CBC dengan IV unik per file</li>
+    <li><strong>Key Hashing:</strong> bcrypt dengan cost 12</li>
+    <li><strong>Storage:</strong> File disimpan di folder private</li>
+    <li>
+        <strong>Proteksi:</strong>
+        <ul>
+            <li>Rate limiting 5 percobaan per menit</li>
+            <li>Auto-delete file temporary setelah proses</li>
+            <li>Validasi ketat input kunci</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>Teknologi Tambahan</h3>
+<ul>
+    <li><strong>Enkripsi:</strong> OpenSSL (AES-256-CBC)</li>
+    <li><strong>Hashing:</strong> bcrypt</li>
+    <li><strong>Storage:</strong> Laravel Filesystem</li>
+    <li><strong>Streaming:</strong> Laravel Response Stream</li>
+</ul>
