@@ -6,13 +6,13 @@ use App\Livewire\Settings\Profile;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\SuggestionController;
-use App\Http\Controllers\DashboardController; // Tambahkan ini
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoogleController;
+use Illuminate\Support\Facades\Log;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [FileController::class, 'index'])->name('welcome');
 
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])
     ->name('google.redirect'); // Ubah nama route untuk konsistensi
@@ -51,5 +51,41 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/suggestions/{suggestion}', [SuggestionController::class, 'update'])->name('suggestions.update');
     Route::delete('/suggestions/{suggestion}', [SuggestionController::class, 'destroy'])->name('suggestions.destroy');
 });
+
+Route::middleware(['auth:filament'])->group(function () {
+    Route::get('/admin/files/{encryptedFile}/download', [FileController::class, 'download'])
+        ->name('admin.file.download');
+});
+
+// Route publik untuk dekripsi
+Route::get('/files/{file}', [FileController::class, 'showDecryptForm'])
+    ->name('file.show');
+    
+Route::post('/files/{file}/decrypt', [FileController::class, 'decryptAndDownload'])
+    ->name('file.decrypt');
+
+
+    Route::get('/test-encrypt', function() {
+        $testFile = storage_path('test.txt');
+        file_put_contents($testFile, 'This is a test file content');
+        
+        $key = 'test-key-123';
+        
+        $service = app(\App\Services\FileEncryptionService::class);
+        
+        // Enkripsi
+        $encrypted = $service->encryptFile($testFile, $key);
+        Log::info('Encrypted test file: ', $encrypted);
+        
+        // Dekripsi
+        $decrypted = $service->decryptFile($encrypted['path'], $key);
+        Log::info('Decrypted content: ' . $decrypted);
+        
+        return response()->json([
+            'original' => 'This is a test file content',
+            'decrypted' => $decrypted,
+            'match' => $decrypted === 'This is a test file content'
+        ]);
+    });
 
 require __DIR__.'/auth.php';

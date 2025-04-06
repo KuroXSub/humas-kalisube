@@ -105,6 +105,8 @@ return [
         ),
     ],
 
+    'encryption_key' => env('APP_ENCRYPTION_KEY'),
+
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver
