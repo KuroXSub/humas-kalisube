@@ -46,6 +46,17 @@ header nav a {
     transition: all 0.3s ease;
 }
 
+header nav a.header-button {
+    background-color: #f0ad4e; /* Contoh warna oranye */
+    color: white;
+    border-color: #d9534f00; /* Menghilangkan border atau warna lain */
+}
+
+header nav a.header-button:hover {
+    background-color: #ea982d;
+    border-color: #c9302c00;
+}
+
 header nav a:hover {
     border-color: #1915014a;
     background-color: #f9fafb;

@@ -1,0 +1,119 @@
+.document-wrapper {
+    max-width: 800px; /* Sesuaikan lebar maksimal */
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.document-info {
+    margin-bottom: 20px;
+}
+
+.document-title {
+    font-size: 2rem; /* Ukuran font awal */
+    text-align: center; /* Center informasi file */
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.document-description {
+    color: #718096;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.document-meta {
+    font-size: 0.9rem;
+    color: #a0aec0;
+}
+
+.decrypt-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #4a5568;
+    margin-bottom: 5px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    font-size: 1rem;
+    color: #2d3748;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(103, 115, 234, 0.25);
+}
+
+.download-button {
+    padding: 12px 20px;
+    background-color: #667eea;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.download-button:hover {
+    background-color: #5a67d8;
+}
+
+.button-navigation {
+    margin-top: 10px;
+    display: grid; /* Menggunakan grid untuk tata letak 2 kolom */
+    grid-template-columns: 1fr 1fr; /* Dua kolom dengan lebar yang sama */
+    gap: 10px; /* Jarak antar tombol */
+}
+
+.button-navigation a {
+    display: inline-block; /* Ensure proper padding and margin */
+    text-align: center; /* Center the text in the button */
+}
+
+.alert {
+    padding: 15px;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+.alert-error {
+    background-color: #fde2e2;
+    border-left: 4px solid #e53e3e;
+    color: #c53030;
+}
+
+/* Penyesuaian untuk layar kecil (mobile) */
+@media (max-width: 768px) {
+    .document-title {
+        font-size: 1.8rem; /* Ukuran font lebih kecil */
+    }
+
+    .button-navigation {
+        grid-template-columns: 1fr; /* Satu kolom di layar kecil */
+    }
+
+    .button-navigation a {
+        font-size: 0.9rem; /* Ukuran font tombol lebih kecil */
+        padding: 10px 15px; /* Padding tombol lebih kecil */
+    }
+}
