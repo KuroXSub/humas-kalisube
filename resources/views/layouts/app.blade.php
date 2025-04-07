@@ -11,6 +11,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Styles -->
     <link href="{{ asset('css/landing.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/files.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/decrypt.css') }}" rel="stylesheet">
 </head>
 <body class="bg-gray-50">
     @yield('content')
