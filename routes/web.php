@@ -57,6 +57,8 @@ Route::middleware(['auth:filament'])->group(function () {
         ->name('admin.file.download');
 });
 
+Route::get('/files', [FileController::class, 'index'])->name('files.index');
+
 // Route publik untuk dekripsi
 Route::get('/files/{file}', [FileController::class, 'showDecryptForm'])
     ->name('file.show');
@@ -65,27 +67,27 @@ Route::post('/files/{file}/decrypt', [FileController::class, 'decryptAndDownload
     ->name('file.decrypt');
 
 
-    Route::get('/test-encrypt', function() {
-        $testFile = storage_path('test.txt');
-        file_put_contents($testFile, 'This is a test file content');
+    // Route::get('/test-encrypt', function() {
+    //     $testFile = storage_path('test.txt');
+    //     file_put_contents($testFile, 'This is a test file content');
         
-        $key = 'test-key-123';
+    //     $key = 'test-key-123';
         
-        $service = app(\App\Services\FileEncryptionService::class);
+    //     $service = app(\App\Services\FileEncryptionService::class);
         
-        // Enkripsi
-        $encrypted = $service->encryptFile($testFile, $key);
-        Log::info('Encrypted test file: ', $encrypted);
+    //     // Enkripsi
+    //     $encrypted = $service->encryptFile($testFile, $key);
+    //     Log::info('Encrypted test file: ', $encrypted);
         
-        // Dekripsi
-        $decrypted = $service->decryptFile($encrypted['path'], $key);
-        Log::info('Decrypted content: ' . $decrypted);
+    //     // Dekripsi
+    //     $decrypted = $service->decryptFile($encrypted['path'], $key);
+    //     Log::info('Decrypted content: ' . $decrypted);
         
-        return response()->json([
-            'original' => 'This is a test file content',
-            'decrypted' => $decrypted,
-            'match' => $decrypted === 'This is a test file content'
-        ]);
-    });
+    //     return response()->json([
+    //         'original' => 'This is a test file content',
+    //         'decrypted' => $decrypted,
+    //         'match' => $decrypted === 'This is a test file content'
+    //     ]);
+    // });
 
 require __DIR__.'/auth.php';
