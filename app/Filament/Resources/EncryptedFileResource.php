@@ -64,13 +64,15 @@ class EncryptedFileResource extends Resource
                 Forms\Components\TextInput::make('encryption_key')
                     ->required()
                     ->password()
+                    ->revealable()
                     ->confirmed()
                     ->maxLength(255)
-                    ->helperText('Kunci ini akan digunakan untuk enkripsi dan harus diberikan ke masyarakat'),
+                    ->helperText('Kunci ini akan digunakan untuk enkripsi dan harus diberikan ke penerima file'),
                 
                 Forms\Components\TextInput::make('encryption_key_confirmation')
                     ->required()
                     ->password()
+                    ->revealable()
                     ->maxLength(255),
             ]);
     }
@@ -92,18 +94,6 @@ class EncryptedFileResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('copy_link')
-                    ->label('Salin Link Publik')
-                    ->icon('heroicon-o-link')
-                    ->action(function (EncryptedFile $record) {
-                        $url = route('file.show', $record);
-                        \Filament\Notifications\Notification::make()
-                            ->title('Link publik telah disalin')
-                            ->body($url)
-                            ->success()
-                            ->send();
-                        return $url;
-                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
