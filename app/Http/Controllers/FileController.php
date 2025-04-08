@@ -71,10 +71,18 @@ class FileController extends Controller
 
     public function decryptAndDownload(Request $request, EncryptedFile $file)
     {
-        $request->validate(['decryption_key' => 'required|string']);
+        $request->validate([
+            'decryption_key' => 'required|string'
+        ], [
+            'decryption_key.required' => 'Kunci dekripsi harus diisi'
+        ]);
 
         if (!Hash::check($request->decryption_key, $file->key_hash)) {
-            return back()->withErrors(['decryption_key' => 'Invalid decryption key']);
+            return back()
+                ->withInput()
+                ->withErrors([
+                    'decryption_key' => 'Kunci dekripsi salah. Silakan coba lagi atau hubungi admin untuk kunci yang benar.'
+                ]);
         }
 
         try {
