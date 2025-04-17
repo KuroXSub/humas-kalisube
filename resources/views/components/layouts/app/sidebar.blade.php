@@ -3,7 +3,8 @@
     <head>
         @include('partials.head')
         <link href="{{ asset('css/navigation.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/setting.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/settings.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/settings-navigation.css') }}" rel="stylesheet">
     </head>
     <body class="min-h-screen bg-gray-100 dark:bg-gray-900">
         <div class="flex flex-col min-h-screen">
