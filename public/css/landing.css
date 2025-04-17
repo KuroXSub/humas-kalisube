@@ -50,6 +50,10 @@ header nav a.header-button {
     background-color: #f0ad4e; /* Contoh warna oranye */
     color: white;
     border-color: #d9534f00; /* Menghilangkan border atau warna lain */
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 header nav a.header-button:hover {

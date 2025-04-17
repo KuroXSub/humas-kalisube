@@ -139,7 +139,8 @@ a.download-link:hover {
         margin-bottom: 10px; /* Beri jarak dengan tombol */
     }
 
-    a.button-primary {
+    a.button-primary,
+    a.header-button {
         font-size: 0.8rem; /* Ukuran font tombol lebih kecil */
         padding: 8px 12px; /* Padding tombol lebih kecil */
     }
