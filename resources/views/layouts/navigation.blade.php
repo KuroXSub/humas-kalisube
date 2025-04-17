@@ -81,14 +81,14 @@
             <div class="flex items-center px-5">
                 <div class="flex-shrink-0">
                     <span class="relative flex h-8 w-8 shrink-0 overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700">
-                        <span class="flex h-full w-full items-center justify-center rounded-full bg-neutral-200 text-black dark:bg-neutral-700 dark:text-white">
+                        <span class="flex h-full w-full items-center justify-center rounded-full bg-neutral-200 text-white dark:bg-neutral-700 dark:text-white">
                             {{ auth()->user()->initials() }}
                         </span>
                     </span>
                 </div>
                 <div class="ml-3">
                     <div class="text-base font-medium text-white">{{ auth()->user()->name }}</div>
-                    <div class="text-sm font-medium text-gray-400">{{ auth()->user()->email }}</div>
+                    <div class="text-sm font-medium text-white">{{ auth()->user()->email }}</div>
                 </div>
             </div>
             <div class="mt-3 px-2 space-y-1">
