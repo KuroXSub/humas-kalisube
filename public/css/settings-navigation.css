@@ -1,0 +1,118 @@
+/* Settings Navigation Component */
+
+:root {
+    --bg-white: #ffffff;
+    --bg-gray-800: #1f2937;
+    --border-gray-200: #e5e7eb;
+    --border-gray-700: #374151;
+    --from-indigo-500: #6366f1;
+    --to-purple-600: #9333ea;
+    --text-gray-900: #111827;
+    --text-white: #ffffff;
+    --text-gray-500: #6b7280;
+    --text-gray-400: #9ca3af;
+    --text-gray-700: #374151;
+    --text-gray-300: #d1d5db;
+    --bg-indigo-50: #eef2ff;
+    --text-indigo-700: #4338ca;
+    --text-indigo-400: #818cf8;
+    --bg-gray-700: #374151;
+    --bg-gray-100: #f3f4f6;
+}
+
+.settings-nav-container {
+    background-color: var(--bg-white);
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-gray-200);
+    padding: 1.5rem;
+}
+
+.dark .settings-nav-container {
+    background-color: var(--bg-gray-800);
+    border-color: var(--border-gray-700);
+}
+
+.settings-nav-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.settings-nav-avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 9999px;
+    background-image: linear-gradient(to right, var(--from-indigo-500), var(--to-purple-600));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.settings-nav-user-info h3 {
+    font-weight: 600;
+    color: var(--text-gray-900);
+}
+
+.dark .settings-nav-user-info h3 {
+    color: var(--text-white);
+}
+
+.settings-nav-user-info p {
+    font-size: 0.875rem;
+    color: var(--text-gray-500);
+}
+
+.dark .settings-nav-user-info p {
+    color: var(--text-gray-400);
+}
+
+.settings-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.settings-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+}
+
+.settings-nav-link-active {
+    background-color: var(--bg-indigo-50);
+    color: var(--text-indigo-700);
+}
+
+.dark .settings-nav-link-active {
+    background-color: var(--bg-gray-700);
+    color: var(--text-indigo-400);
+}
+
+.settings-nav-link-inactive {
+    color: var(--text-gray-700);
+}
+
+.dark .settings-nav-link-inactive {
+    color: var(--text-gray-300);
+}
+
+.settings-nav-link-inactive:hover {
+    background-color: var(--bg-gray-100);
+}
+
+.dark .settings-nav-link-inactive:hover {
+    background-color: var(--bg-gray-700);
+}
+
+.settings-nav-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
