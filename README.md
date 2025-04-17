@@ -1,101 +1,57 @@
 <h1>Website Pengaduan dan Saran Desa Kalisube</h1>
-<p>Website Pengaduan dan Saran Desa Kalisube adalah sebuah platform yang dirancang untuk memudahkan masyarakat dalam menyampaikan pengaduan dan saran terkait pembangunan dan pelayanan di Desa Kalisube. Website ini dikembangkan menggunakan Laravel 12 dengan dukungan Filament v3 untuk manajemen admin. Web server dan database dijalankan menggunakan Laragon dengan PHP 8.3.15 dan MySQL 8.0.30.</p>
+<p>Website ini adalah platform untuk masyarakat menyampaikan pengaduan dan saran terhadap pembangunan serta pelayanan desa. Dibangun dengan Laravel 12 dan Filament v3, sistem ini berjalan di atas Laragon menggunakan PHP 8.3.15 dan MySQL 8.0.30.</p>
 
 <h2>Fitur Utama</h2>
 
 <h3>Manajemen Data</h3>
 <ul>
-  <li><strong>Pengaduan:</strong>
-    <ul>
-      <li>CRUD pengaduan dengan kategori, deskripsi, status, dan prioritas</li>
-      <li>Sistem anonimisasi dengan hashing SHA-256 di admin panel</li>
-      <li>Notifikasi real-time untuk admin saat ada pengaduan baru</li>
-    </ul>
-  </li>
-  <li><strong>Saran:</strong>
-    <ul>
-      <li>CRUD saran dari masyarakat</li>
-      <li>Proteksi identitas dengan sistem hashing</li>
-      <li>Notifikasi untuk admin saat saran baru masuk</li>
-    </ul>
-  </li>
-  <li><strong>Feedback:</strong>
-    <ul>
-      <li>Sistem rating dan komentar</li>
-      <li>Identitas terproteksi dengan hashing</li>
-    </ul>
-  </li>
+  <li><strong>Pengaduan:</strong> CRUD, status, prioritas, SHA-256 untuk anonimisasi, notifikasi real-time</li>
+  <li><strong>Saran:</strong> CRUD, proteksi identitas, notifikasi masuk</li>
+  <li><strong>Feedback:</strong> Rating dan komentar dengan proteksi identitas</li>
 </ul>
 
 <h3>Admin Panel Modern</h3>
 <ul>
-  <li><strong>Dashboard Overview:</strong>
-    <ul>
-      <li>Ringkasan data dalam 4 kelompok widget</li>
-      <li>Tampilan responsive dengan kolom dinamis</li>
-    </ul>
-  </li>
-  <li><strong>Warna Profesional:</strong>
-    <ul>
-      <li>Palet warna biru (#1e3a8a) sebagai primary color</li>
-      <li>Kombinasi warna untuk status (hijau, kuning, merah)</li>
-    </ul>
-  </li>
-  <li><strong>Sistem Notifikasi:</strong>
-    <ul>
-      <li>Notifikasi real-time untuk aktivitas user</li>
-      <li>History aktivitas terpusat</li>
-    </ul>
-  </li>
+  <li><strong>Dashboard Overview:</strong> Widget responsif dalam 4 grup utama</li>
+  <li><strong>Palet Warna Profesional:</strong> Warna utama biru tua (#1e3a8a), status dengan hijau, kuning, merah</li>
+  <li><strong>Sistem Notifikasi:</strong> Real-time dan log aktivitas user</li>
 </ul>
 
-<h3>Autentikasi</h3>
+<h3>Autentikasi Terbaru</h3>
 <ul>
-  <li>Login dengan email/password</li>
-  <li>Login dengan Google menggunakan Socialite</li>
-  <li>Auto-registrasi dan verifikasi untuk user baru</li>
+  <li><strong>Redesain Auth (Livewire):</strong>
+    <ul>
+      <li>UI baru untuk Login, Register, Reset Password, dan Verifikasi Email</li>
+      <li>Responsif, ringan, dan menggunakan Tailwind</li>
+    </ul>
+  </li>
+  <li><strong>Social Login:</strong> Login dengan Google melalui Laravel Socialite</li>
+  <li><strong>Verifikasi Otomatis:</strong> Email verification untuk akun baru</li>
+</ul>
+
+<h3>Settings Terbaru</h3>
+<ul>
+  <li><strong>Halaman Profil:</strong> Update nama, email, dan foto profil</li>
+  <li><strong>Pengaturan Password:</strong> Ubah password dengan validasi real-time</li>
+  <li><strong>Tampilan (Appearance):</strong> Pilih tema terang/gelap (dark mode)</li>
 </ul>
 
 <h2>Dashboard Admin Panel</h2>
 
 <h3>Overview Widget</h3>
-<p>Dashboard admin menampilkan ringkasan data dalam 4 kelompok:</p>
-
 <ol>
-  <li><strong>Informasi Umum (2 kolom):</strong>
-    <ul>
-      <li>Total Masyarakat terdaftar</li>
-      <li>Jumlah Kategori pengaduan</li>
-    </ul>
-  </li>
-  <li><strong>Status Pengaduan (3 kolom):</strong>
-    <ul>
-      <li>Pengaduan Menunggu</li>
-      <li>Pengaduan Diproses</li>
-      <li>Pengaduan Selesai</li>
-    </ul>
-  </li>
-  <li><strong>Prioritas Pengaduan (3 kolom):</strong>
-    <ul>
-      <li>Prioritas Rendah</li>
-      <li>Prioritas Sedang</li>
-      <li>Prioritas Tinggi</li>
-    </ul>
-  </li>
-  <li><strong>Partisipasi Masyarakat (2 kolom):</strong>
-    <ul>
-      <li>Total Feedback</li>
-      <li>Total Saran</li>
-    </ul>
-  </li>
+  <li><strong>Informasi Umum:</strong> Masyarakat terdaftar, Kategori pengaduan</li>
+  <li><strong>Status Pengaduan:</strong> Menunggu, Diproses, Selesai</li>
+  <li><strong>Prioritas Pengaduan:</strong> Rendah, Sedang, Tinggi</li>
+  <li><strong>Partisipasi Masyarakat:</strong> Total Feedback dan Saran</li>
 </ol>
 
 <h3>Fitur Notifikasi</h3>
 <ul>
-  <li>Notifikasi saat user baru mendaftar</li>
-  <li>Peringatan ketika ada pengaduan baru</li>
+  <li>User baru terdaftar</li>
+  <li>Pengaduan baru</li>
   <li>Update status pengaduan</li>
-  <li>Notifikasi aktivitas CRUD saran</li>
+  <li>CRUD aktivitas saran</li>
 </ul>
 
 <h2>Teknologi yang Digunakan</h2>
@@ -104,8 +60,8 @@
   <li><strong>Admin Panel:</strong> Filament v3</li>
   <li><strong>Database:</strong> MySQL 8.0.30</li>
   <li><strong>Frontend:</strong> Tailwind CSS, Livewire</li>
-  <li><strong>Autentikasi:</strong> Laravel + Socialite</li>
-  <li><strong>Keamanan:</strong> Hashing SHA-256, OAuth 2.0</li>
+  <li><strong>Autentikasi:</strong> Laravel Auth + Socialite</li>
+  <li><strong>Keamanan:</strong> Hashing SHA-256, bcrypt, OAuth 2.0</li>
   <li><strong>Notifikasi:</strong> Laravel Notifications</li>
 </ul>
 
@@ -116,16 +72,14 @@
   <li>Clone repository</li>
   <pre><code>git clone https://github.com/KuroXSub/humas-kalisube.git
 cd organization-spala</code></pre>
-  <li>Install dependencies:
-    <pre><code>composer install
+  <li>Install dependencies</li>
+  <pre><code>composer install
 npm install</code></pre>
-  </li>
-  <li>Setup environment:
-    <pre><code>cp .env.example .env
+  <li>Setup environment</li>
+  <pre><code>cp .env.example .env
 php artisan key:generate</code></pre>
-  </li>
-  <p>Buka file <code>.env</code> dan sesuaikan konfigurasi database:</p>
-<pre><code>DB_CONNECTION=mysql
+  <li>Konfigurasi database di file <code>.env</code></li>
+  <pre><code>DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=db_pengaduan_kalisube
@@ -135,130 +89,63 @@ DB_PASSWORD=</code></pre>
 
 <h3>Konfigurasi Admin Panel</h3>
 <ol>
-  <li>Migrasi database:
-    <pre><code>php artisan migrate</code></pre>
-  </li>
-  <li>Kompilasi assets:
-    <pre><code>npm run build
+  <li>Migrasi database</li>
+  <pre><code>php artisan migrate</code></pre>
+  <li>Kompilasi assets</li>
+  <pre><code>npm run build
 composer run dev</code></pre>
-  </li>
-  <li>Jalankan sistem:
-    <pre><code>php artisan serve</code></pre>
-  </li>
+  <li>Jalankan server lokal</li>
+  <pre><code>php artisan serve</code></pre>
 </ol>
 
 <h3>Akses Admin Panel</h3>
 <ul>
-  <li>Buat User <code>php artisan make:filament-user</code></li>
-  <li>Buka <code>http://127.0.0.1:8000/admin</code></li>
-  <li>Login dengan akun admin</li>
-  <li>Dashboard overview akan menampilkan ringkasan sistem</li>
+  <li>Buat user admin: <code>php artisan make:filament-user</code></li>
+  <li>Akses via: <code>http://127.0.0.1:8000/admin</code></li>
 </ul>
 
 <h2>Panduan Penggunaan</h2>
 
 <h3>Untuk Admin</h3>
 <ol>
-  <li>Pantau semua aktivitas melalui dashboard</li>
-  <li>Kelola pengaduan melalui menu khusus</li>
-  <li>Lihat notifikasi di pojok kanan atas</li>
+  <li>Pantau aktivitas dari dashboard</li>
+  <li>Kelola pengaduan dan saran melalui menu admin</li>
+  <li>Akses histori notifikasi dan log aktivitas</li>
 </ol>
 
 <h3>Untuk Masyarakat</h3>
 <ol>
   <li>Login menggunakan email atau Google</li>
-  <li>Ajukan pengaduan/saran melalui form</li>
-  <li>Pantau status pengaduan Anda</li>
-  <li>Berikan feedback untuk pengaduan</li>
+  <li>Kirim pengaduan dan saran</li>
+  <li>Lihat status pengaduan</li>
+  <li>Beri feedback terhadap penanganan</li>
 </ol>
 
 <h2>Fitur Baru: Sistem Enkripsi/Dekripsi File</h2>
 
 <h3>Manajemen File Terenkripsi</h3>
 <ul>
-    <li>
-        <strong>Admin Panel:</strong>
-        <ul>
-            <li>Upload file dengan enkripsi AES-256-CBC</li>
-            <li>Input kunci enkripsi khusus untuk setiap file</li>
-            <li>Auto-generate hash kunci (SHA-256) untuk keamanan</li>
-            <li>
-                Daftar file terenkripsi dengan informasi:
-                <ul>
-                    <li>Nama asli file</li>
-                    <li>Tipe file</li>
-                    <li>Tanggal upload</li>
-                    <li>Ukuran file</li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <strong>Public Access:</strong>
-        <ul>
-            <li>Halaman khusus untuk dekripsi file</li>
-            <li>Input kunci dekripsi oleh masyarakat</li>
-            <li>Download otomatis setelah dekripsi sukses</li>
-            <li>Proteksi brute-force dengan rate limiting</li>
-        </ul>
-    </li>
+  <li><strong>Admin Panel:</strong> Upload file, input kunci, hash otomatis, daftar metadata file</li>
+  <li><strong>Akses Publik:</strong> Halaman dekripsi, input kunci, download otomatis, rate limiting</li>
 </ul>
 
 <h3>Alur Kerja</h3>
 <ol>
-    <li>
-        <strong>Admin Mengupload File:</strong>
-        <ul>
-            <li>Pilih file melalui admin panel</li>
-            <li>Masukkan kunci enkripsi (minimal 8 karakter)</li>
-            <li>
-                Sistem otomatis:
-                <ul>
-                    <li>Generate IV (Initialization Vector)</li>
-                    <li>Enkripsi konten file</li>
-                    <li>Simpan ke storage private</li>
-                    <li>Hash kunci enkripsi (bcrypt)</li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <strong>Masyarakat Mengakses File:</strong>
-        <ul>
-            <li>Buka link publik file</li>
-            <li>Masukkan kunci dekripsi yang diberikan admin</li>
-            <li>
-                Sistem otomatis:
-                <ul>
-                    <li>Verifikasi kunci dengan hash</li>
-                    <li>Dekripsi file di memory</li>
-                    <li>Stream download ke browser</li>
-                    <li>Hapus cache setelah download</li>
-                </ul>
-            </li>
-        </ul>
-    </li>
+  <li><strong>Admin Upload:</strong> Pilih file → masukkan kunci → enkripsi otomatis → simpan di storage</li>
+  <li><strong>User Akses:</strong> Buka link → input kunci → verifikasi → dekripsi → stream download</li>
 </ol>
 
 <h3>Keamanan Sistem</h3>
 <ul>
-    <li><strong>Enkripsi:</strong> AES-256-CBC dengan IV unik per file</li>
-    <li><strong>Key Hashing:</strong> bcrypt dengan cost 12</li>
-    <li><strong>Storage:</strong> File disimpan di folder private</li>
-    <li>
-        <strong>Proteksi:</strong>
-        <ul>
-            <li>Rate limiting 5 percobaan per menit</li>
-            <li>Auto-delete file temporary setelah proses</li>
-            <li>Validasi ketat input kunci</li>
-        </ul>
-    </li>
+  <li><strong>Enkripsi:</strong> AES-256-CBC dengan IV unik</li>
+  <li><strong>Hashing:</strong> bcrypt (cost 12)</li>
+  <li><strong>Storage:</strong> Folder privat Laravel</li>
+  <li><strong>Proteksi:</strong> Rate limiting, auto delete cache, validasi kunci</li>
 </ul>
 
 <h3>Teknologi Tambahan</h3>
 <ul>
-    <li><strong>Enkripsi:</strong> OpenSSL (AES-256-CBC)</li>
-    <li><strong>Hashing:</strong> bcrypt</li>
-    <li><strong>Storage:</strong> Laravel Filesystem</li>
-    <li><strong>Streaming:</strong> Laravel Response Stream</li>
+  <li><strong>Enkripsi:</strong> OpenSSL</li>
+  <li><strong>Hashing:</strong> bcrypt</li>
+  <li><strong>Streaming:</strong> Laravel Response Stream</li>
 </ul>
