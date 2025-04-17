@@ -1,44 +1,51 @@
+<section class="settings-container">
+    <div class="settings-header">
+        <h1 class="settings-title">Profile Settings</h1>
+        <p class="settings-subtitle">Manage your personal information and account preferences</p>
+    </div>
 
-<section class="w-full">
-    @include('partials.settings-heading')
-    <x-settings.layout :heading="__('Profile')" :subheading="__('Update your name and email address')">
-        <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
-            <flux:input wire:model="name" :label="__('Name')" type="text" required autofocus autocomplete="name" />
+    <div class="settings-grid">
+        <!-- Sidebar Navigation -->
+        <div>
+            <x-settings.navigation active="profile" />
+        </div>
 
-            <div>
-                <flux:input wire:model="email" :label="__('Email')" type="email" required autocomplete="email" />
-
-                @if (auth()->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail &&! auth()->user()->hasVerifiedEmail())
-                    <div>
-                        <flux:text class="mt-4">
-                            {{ __('Your email address is unverified.') }}
-
-                            <flux:link class="text-sm cursor-pointer" wire:click.prevent="resendVerificationNotification">
-                                {{ __('Click here to re-send the verification email.') }}
-                            </flux:link>
-                        </flux:text>
-
-                        @if (session('status') === 'verification-link-sent')
-                            <flux:text class="mt-2 font-medium !dark:text-green-400 !text-green-600">
-                                {{ __('A new verification link has been sent to your email address.') }}
-                            </flux:text>
-                        @endif
+        <!-- Main Content - Enhanced -->
+        <div>
+            <div class="settings-card">
+                <h2 class="settings-card-title">Personal Information</h2>
+                
+                <form wire:submit="updateProfileInformation" class="settings-form">
+                    <div class="settings-form-group">
+                        <label for="name" class="settings-label">Full Name</label>
+                        <input wire:model="name" type="text" id="name" required 
+                               class="settings-input" placeholder="Enter your full name">
+                        @error('name')
+                            <p class="settings-error">{{ $message }}</p>
+                        @enderror
                     </div>
-                @endif
+
+                    <div class="settings-form-group">
+                        <label for="email" class="settings-label">Email Address</label>
+                        <input wire:model="email" type="email" id="email" required 
+                               class="settings-input" placeholder="Enter your email address">
+                        @error('email')
+                            <p class="settings-error">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div class="flex items-center justify-between pt-4">
+                        <x-action-message class="settings-action-message" on="profile-updated">
+                            {{ __('Saved successfully!') }}
+                        </x-action-message>
+                        
+                        <button type="submit" 
+                                class="settings-button settings-button-primary">
+                            <span>Save Changes</span>
+                        </button>
+                    </div>
+                </form>
             </div>
-
-            <div class="flex items-center gap-4">
-                <div class="flex items-center justify-end">
-                    <flux:button variant="primary" type="submit" class="w-full">{{ __('Save') }}</flux:button>
-                </div>
-
-                <x-action-message class="me-3" on="profile-updated">
-                    {{ __('Saved.') }}
-                </x-action-message>
-            </div>
-        </form>
-
-        <livewire:settings.delete-user-form />
-    </x-settings.layout>
+        </div>
+    </div>
 </section>
-
