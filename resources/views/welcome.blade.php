@@ -12,7 +12,7 @@
     <link href="{{ asset('css/decrypt.css') }}" rel="stylesheet">
     <script src="{{ asset('js/script.js') }}" defer></script>
 </head>
-<body class="bg-[#FDFDFC] dark:bg-[#0a0a0a]">
+<body class="bg-[#FDFDFC]">
     <div class="container">
         <header>
             <h1 class="text-2xl font-bold hidden">Sistem Pengaduan Desa Kalisube</h1>
