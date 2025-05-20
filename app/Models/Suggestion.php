@@ -24,12 +24,6 @@ class Suggestion extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-            ->logFillable();
-    }
-
     protected $appends = ['hashed_user'];
 
     protected static function booted()

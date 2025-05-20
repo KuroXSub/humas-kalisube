@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="document-wrapper">
-
         @if($errors->has('decryption_key'))
             <div class="alert alert-error mb-4">
                 <div class="flex items-center">
@@ -21,7 +19,9 @@
 
         <div class="document-info">
             <h1 class="document-title">{{ $file->title }}</h1>
-            <p class="document-description">{{ $file->description }}</p>
+            <div class="document-description-container">
+                <p class="document-description">{{ $file->description }}</p>
+            </div>
             <div class="document-meta">
                 <span>Tipe File: {{ strtoupper($file->file_type) }}</span>
             </div>
@@ -45,10 +45,10 @@
             </button>
 
             <div class="button-navigation">
-                <a href="{{ route('files.index') }}" class="button-primary">
+                <a href="{{ route('files.index') }}" class="button-secondary">
                     ← Kembali ke Daftar Dokumen
                 </a>
-                <a href="{{ route('welcome') }}" class="button-primary">
+                <a href="{{ route('welcome') }}" class="button-secondary">
                     ← Kembali ke Beranda
                 </a>
             </div>

@@ -9,10 +9,12 @@
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Styles -->
     <link href="{{ asset('css/landing.css') }}" rel="stylesheet">
     <link href="{{ asset('css/files.css') }}" rel="stylesheet">
     <link href="{{ asset('css/decrypt.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50">
     @yield('content')

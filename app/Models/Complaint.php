@@ -47,15 +47,8 @@ class Complaint extends Model
         return $this->hasOne(Feedback::class);
     }
 
-    public function getActivitylogOptions(): LogOptions
-    {
-        return LogOptions::defaults()
-            ->logFillable();
-    }
-
     protected $appends = ['hashed_user'];
 
-    // Otomatis generate hash saat membuat complaint
     protected static function booted()
     {
         static::creating(function ($complaint) {

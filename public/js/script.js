@@ -51,3 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }, 100);
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+        const downloadLinks = document.querySelectorAll('.download-link');
+        downloadLinks.forEach(link => {
+            link.classList.remove('download-link'); // Hapus class kustom
+            link.classList.add('btn', 'btn-sm', 'btn-info'); // Tambahkan class Bootstrap
+        });
+    });
