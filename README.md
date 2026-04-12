@@ -1,151 +1,175 @@
-<h1>Website Pengaduan dan Saran Desa Kalisube</h1>
-<p>Website ini adalah platform untuk masyarakat menyampaikan pengaduan dan saran terhadap pembangunan serta pelayanan desa. Dibangun dengan Laravel 12 dan Filament v3, sistem ini berjalan di atas Laragon menggunakan PHP 8.3.15 dan MySQL 8.0.30.</p>
+# Website Pengaduan dan Saran Desa
 
-<h2>Fitur Utama</h2>
+<div align="center">
 
-<h3>Manajemen Data</h3>
-<ul>
-  <li><strong>Pengaduan:</strong> CRUD, status, prioritas, SHA-256 untuk anonimisasi, notifikasi real-time</li>
-  <li><strong>Saran:</strong> CRUD, proteksi identitas, notifikasi masuk</li>
-  <li><strong>Feedback:</strong> Rating dan komentar dengan proteksi identitas</li>
-</ul>
+[![GitHub stars](https://img.shields.io/github/stars/KuroXSub/humas-desa-laravel?style=for-the-badge)](https://github.com/KuroXSub/humas-desa-laravel/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/KuroXSub/humas-desa-laravel?style=for-the-badge)](https://github.com/KuroXSub/humas-desa-laravel/network)
+[![GitHub issues](https://img.shields.io/github/issues/KuroXSub/humas-desa-laravel?style=for-the-badge)](https://github.com/KuroXSub/humas-desa-laravel/issues)
 
-<h3>Admin Panel Modern</h3>
-<ul>
-  <li><strong>Dashboard Overview:</strong> Widget responsif dalam 4 grup utama</li>
-  <li><strong>Palet Warna Profesional:</strong> Warna utama biru tua (#1e3a8a), status dengan hijau, kuning, merah</li>
-  <li><strong>Sistem Notifikasi:</strong> Real-time dan log aktivitas user</li>
-</ul>
+</div>
 
-<h3>Autentikasi Terbaru</h3>
-<ul>
-  <li><strong>Redesain Auth (Livewire):</strong>
-    <ul>
-      <li>UI baru untuk Login, Register, Reset Password, dan Verifikasi Email</li>
-      <li>Responsif, ringan, dan menggunakan Tailwind</li>
-    </ul>
-  </li>
-  <li><strong>Social Login:</strong> Login dengan Google melalui Laravel Socialite</li>
-  <li><strong>Verifikasi Otomatis:</strong> Email verification untuk akun baru</li>
-</ul>
+Website ini adalah platform untuk masyarakat menyampaikan pengaduan dan saran terhadap pembangunan serta pelayanan desa. Dibangun dengan Laravel 12 dan Filament v3, sistem ini berjalan di atas Laragon menggunakan PHP 8.3.15 dan MySQL 8.0.30.
 
-<h3>Settings Terbaru</h3>
-<ul>
-  <li><strong>Halaman Profil:</strong> Update nama, email, dan foto profil</li>
-  <li><strong>Pengaturan Password:</strong> Ubah password dengan validasi real-time</li>
-  <li><strong>Tampilan (Appearance):</strong> Pilih tema terang/gelap (dark mode)</li>
-</ul>
+## Fitur Utama
 
-<h2>Dashboard Admin Panel</h2>
+### Manajemen Data
 
-<h3>Overview Widget</h3>
-<ol>
-  <li><strong>Informasi Umum:</strong> Masyarakat terdaftar, Kategori pengaduan</li>
-  <li><strong>Status Pengaduan:</strong> Menunggu, Diproses, Selesai</li>
-  <li><strong>Prioritas Pengaduan:</strong> Rendah, Sedang, Tinggi</li>
-  <li><strong>Partisipasi Masyarakat:</strong> Total Feedback dan Saran</li>
-</ol>
+*   **Pengaduan:** CRUD, status, prioritas, SHA-256 untuk anonimisasi, notifikasi real-time
+*   **Saran:** CRUD, proteksi identitas, notifikasi masuk
+*   **Feedback:** Rating dan komentar dengan proteksi identitas
 
-<h3>Fitur Notifikasi</h3>
-<ul>
-  <li>User baru terdaftar</li>
-  <li>Pengaduan baru</li>
-  <li>Update status pengaduan</li>
-  <li>CRUD aktivitas saran</li>
-</ul>
+### Admin Panel Modern
 
-<h2>Teknologi yang Digunakan</h2>
-<ul>
-  <li><strong>Framework:</strong> Laravel 12</li>
-  <li><strong>Admin Panel:</strong> Filament v3</li>
-  <li><strong>Database:</strong> MySQL 8.0.30</li>
-  <li><strong>Frontend:</strong> Tailwind CSS, Livewire</li>
-  <li><strong>Autentikasi:</strong> Laravel Auth + Socialite</li>
-  <li><strong>Keamanan:</strong> Hashing SHA-256, bcrypt, OAuth 2.0</li>
-  <li><strong>Notifikasi:</strong> Laravel Notifications</li>
-</ul>
+*   **Dashboard Overview:** Widget responsif dalam 4 grup utama
+*   **Palet Warna Profesional:** Warna utama biru tua (#1e3a8a), status dengan hijau, kuning, merah
+*   **Sistem Notifikasi:** Real-time dan log aktivitas user
 
-<h2>Petunjuk Instalasi</h2>
+### Autentikasi Terbaru
 
-<h3>Konfigurasi Awal</h3>
-<ol>
-  <li>Clone repository</li>
-  <pre><code>git clone https://github.com/KuroXSub/humas-kalisube.git
-cd organization-spala</code></pre>
-  <li>Install dependencies</li>
-  <pre><code>composer install
-npm install</code></pre>
-  <li>Setup environment</li>
-  <pre><code>cp .env.example .env
-php artisan key:generate</code></pre>
-  <li>Konfigurasi database di file <code>.env</code></li>
-  <pre><code>DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=db_pengaduan_kalisube
-DB_USERNAME=root
-DB_PASSWORD=</code></pre>
-</ol>
+*   **Redesain Auth (Livewire):**
+    *   UI baru untuk Login, Register, Reset Password, dan Verifikasi Email
+    *   Responsif, ringan, dan menggunakan Tailwind
+*   **Social Login:** Login dengan Google melalui Laravel Socialite
+*   **Verifikasi Otomatis:** Email verification untuk akun baru
 
-<h3>Konfigurasi Admin Panel</h3>
-<ol>
-  <li>Migrasi database</li>
-  <pre><code>php artisan migrate</code></pre>
-  <li>Kompilasi assets</li>
-  <pre><code>npm run build
-composer run dev</code></pre>
-  <li>Jalankan server lokal</li>
-  <pre><code>php artisan serve</code></pre>
-</ol>
+### Settings Terbaru
 
-<h3>Akses Admin Panel</h3>
-<ul>
-  <li>Buat user admin: <code>php artisan make:filament-user</code></li>
-  <li>Akses via: <code>http://127.0.0.1:8000/admin</code></li>
-</ul>
+*   **Halaman Profil:** Update nama, email, dan foto profil
+*   **Pengaturan Password:** Ubah password dengan validasi real-time
+*   **Tampilan (Appearance):** Pilih tema terang/gelap (dark mode)
 
-<h2>Panduan Penggunaan</h2>
+### Dashboard Admin Panel
+---
 
-<h3>Untuk Admin</h3>
-<ol>
-  <li>Pantau aktivitas dari dashboard</li>
-  <li>Kelola pengaduan dan saran melalui menu admin</li>
-  <li>Akses histori notifikasi dan log aktivitas</li>
-</ol>
+### Overview Widget
 
-<h3>Untuk Masyarakat</h3>
-<ol>
-  <li>Login menggunakan email atau Google</li>
-  <li>Kirim pengaduan dan saran</li>
-  <li>Lihat status pengaduan</li>
-  <li>Beri feedback terhadap penanganan</li>
-</ol>
+1.  **Informasi Umum:** Masyarakat terdaftar, Kategori pengaduan
+2.  **Status Pengaduan:** Menunggu, Diproses, Selesai
+3.  **Prioritas Pengaduan:** Rendah, Sedang, Tinggi
+4.  **Partisipasi Masyarakat:** Total Feedback dan Saran
 
-<h2>Fitur Baru: Sistem Enkripsi/Dekripsi File</h2>
+### Fitur Notifikasi
 
-<h3>Manajemen File Terenkripsi</h3>
-<ul>
-  <li><strong>Admin Panel:</strong> Upload file, input kunci, hash otomatis, daftar metadata file</li>
-  <li><strong>Akses Publik:</strong> Halaman dekripsi, input kunci, download otomatis, rate limiting</li>
-</ul>
+*   User baru terdaftar
+*   Pengaduan baru
+*   Update status pengaduan
+*   CRUD aktivitas saran
 
-<h3>Alur Kerja</h3>
-<ol>
-  <li><strong>Admin Upload:</strong> Pilih file → masukkan kunci → enkripsi otomatis → simpan di storage</li>
-  <li><strong>User Akses:</strong> Buka link → input kunci → verifikasi → dekripsi → stream download</li>
-</ol>
+## Tech Stack
 
-<h3>Keamanan Sistem</h3>
-<ul>
-  <li><strong>Enkripsi:</strong> AES-256-CBC dengan IV unik</li>
-  <li><strong>Hashing:</strong> bcrypt (cost 12)</li>
-  <li><strong>Storage:</strong> Folder privat Laravel</li>
-  <li><strong>Proteksi:</strong> Rate limiting, auto delete cache, validasi kunci</li>
-</ul>
+*   **Framework:** Laravel 12
+*   **Admin Panel:** Filament v3
+*   **Database:** MySQL 8.0.30
+*   **Frontend:** Tailwind CSS, Livewire
+*   **Autentikasi:** Laravel Auth + Socialite
+*   **Keamanan:** Hashing SHA-256, bcrypt, OAuth 2.0
+*   **Notifikasi:** Laravel Notifications
 
-<h3>Teknologi Tambahan</h3>
-<ul>
-  <li><strong>Enkripsi:</strong> OpenSSL</li>
-  <li><strong>Hashing:</strong> bcrypt</li>
-  <li><strong>Streaming:</strong> Laravel Response Stream</li>
-</ul>
+## Instalasi
+
+### Konfigurasi Awal
+
+1.  Clone repository
+
+    ``` bash
+    git clone https://github.com/KuroXSub/humas-desa-laravel.git
+    cd humas-desa-laravel
+    ```
+
+2.  Install dependencies
+
+    ``` bash
+    composer install
+    npm install
+    ```
+
+3.  Setup environment
+
+    ``` bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+4.  Konfigurasi database di file `.env`
+
+    ``` code
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=db_pengaduan
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+
+### Konfigurasi Admin Panel
+
+1.  Migrasi database
+
+    ``` bash
+    php artisan migrate
+    ```
+
+2.  Kompilasi assets
+
+    ``` bash
+    npm run build
+    composer run dev
+    ```
+
+3.  Jalankan server lokal
+
+    ``` bash
+    php artisan serve
+    ```
+
+### Akses Admin Panel
+
+- Buat user admin: `php artisan make:filament-user`
+- Akses via: `http://127.0.0.1:8000/admin`
+
+## Panduan Penggunaan
+
+### Untuk Admin
+
+1.  Pantau aktivitas dari dashboard
+2.  Kelola pengaduan dan saran melalui menu admin
+3.  Akses histori notifikasi dan log aktivitas
+
+### Untuk Masyarakat
+
+1.  Login menggunakan email atau Google
+2.  Kirim pengaduan dan saran
+3.  Lihat status pengaduan
+4.  Beri feedback terhadap penanganan
+
+## Fitur Baru: Sistem Enkripsi/Dekripsi File
+
+### Manajemen File Terenkripsi
+
+*   **Admin Panel:** Upload file, input kunci, hash otomatis, daftar metadata file
+*   **Akses Publik:** Halaman dekripsi, input kunci, download otomatis, rate limiting
+
+### Alur Kerja
+
+1.  **Admin Upload:** Pilih file → masukkan kunci → enkripsi otomatis → simpan di storage
+2.  **User Akses:** Buka link → input kunci → verifikasi → dekripsi → stream download
+
+### Keamanan Sistem
+
+*   **Enkripsi:** AES-256-CBC dengan IV unik
+*   **Hashing:** bcrypt (cost 12)
+*   **Storage:** Folder privat Laravel
+*   **Proteksi:** Rate limiting, auto delete cache, validasi kunci
+
+### Teknologi Tambahan
+
+*   **Enkripsi:** OpenSSL
+*   **Hashing:** bcrypt
+*   **Streaming:** Laravel Response Stream
+
+## Pengembang
+Dikembangkan oleh Qurrota.
+
+Website Pengembang: [kuroxsub.my.id](https://kuroxsub.my.id)
+
+GitHub: [@KuroXSub](https://github.com/KuroXSub)
